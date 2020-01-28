@@ -1,24 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Header from './Header';
+import SearchResult from './SearchResult'
 
 function App() {
+
+  const [drinks, setDrinks] = useState([]);
+  const [searchString, setSearchString] = useState('');
+
+  useEffect(() => {
+    // Pass the searchString to getImages
+    getIng(searchString);
+    console.log(drinks)
+  }, []);
+
+
+  function getIng (searchString) {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchString}`
+    fetch(url)
+    .then(response => response.json())
+    .then(response => {
+      setDrinks(response.drinks);
+      console.log(drinks)
+      setSearchString('')
+    })
+    .catch(console.error);
+  }
+
+  function getDrinks(searchString) {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchString}`
+    fetch(url)
+      .then(response => response.json())
+      .then(response => {
+        setDrinks(response.drinks);
+        console.log(drinks)
+        setSearchString('')
+      })
+      .catch(console.error);
+  }
+
+  function handleChange(event) {
+    setSearchString(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    getIng(searchString);
+    getDrinks(searchString)
+    ;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header 
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        searchString={searchString}
+        />
+      <SearchResult 
+      drinks={drinks}
+      />
     </div>
   );
 }
