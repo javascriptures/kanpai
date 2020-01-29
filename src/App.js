@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link, Switch, Route, Redirect} from 'react-router-dom'
+import Recipe from './Recipe'
 import Header from './Header';
 import SearchResult from './SearchResult'
 
@@ -10,7 +12,7 @@ function App() {
   useEffect(() => {
     // Pass the searchString to getImages
     getIng(searchString);
-    console.log(drinks)
+    getDrinks(searchString);
   }, []);
 
 
@@ -50,6 +52,7 @@ function App() {
   }
   return (
     <div>
+    <div>
       <Header 
         handleChange={handleChange}
         handleSubmit={handleSubmit}
@@ -59,6 +62,22 @@ function App() {
       drinks={drinks}
       />
     </div>
+    <main>
+                    <Switch>
+                        <Route
+                            path={`/drinks/:id`}
+                            render={(routerProps) => {
+                                return (<Recipe 
+                                  
+                                  match={routerProps.match}/>
+                                )}}
+                        />
+                        <Route
+                        path="/currency"
+                        render={() => <Redirect to="/drinks"/>}/>
+                    </Switch>
+                </main>
+                </div>
   );
 }
 
