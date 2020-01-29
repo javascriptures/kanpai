@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom'
 const SearchResult = ({drinks}) => {
     let cocktails = drinks.map((drink) => {
         const id = drink.idDrink
-        let name = drink.strDrink
         return (
             <div key={id}>
                 <div>
@@ -24,7 +23,7 @@ const SearchResult = ({drinks}) => {
     return(
         <div>
         <div>
-            <ul>{cocktails}</ul>            
+        {cocktails}         
         </div>
     </div>
     )

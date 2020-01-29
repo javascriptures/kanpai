@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, Switch, Route, Redirect} from 'react-router-dom'
 import Recipe from './Recipe'
 import Header from './Header';
@@ -9,14 +9,9 @@ function App() {
   const [drinks, setDrinks] = useState([]);
   const [searchString, setSearchString] = useState('');
 
-  useEffect(() => {
-    // Pass the searchString to getImages
-    getIng(searchString);
-    getDrinks(searchString);
-  }, []);
 
 
-  function getIng (searchString) {
+  const getIng = (searchString) => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchString}`
     fetch(url)
     .then(response => response.json())
@@ -28,7 +23,8 @@ function App() {
     .catch(console.error);
   }
 
-  function getDrinks(searchString) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getDrinks = (searchString) => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchString}`
     fetch(url)
       .then(response => response.json())
@@ -42,6 +38,7 @@ function App() {
 
   function handleChange(event) {
     setSearchString(event.target.value);
+    
   }
 
   function handleSubmit(event) {
@@ -58,26 +55,28 @@ function App() {
         handleSubmit={handleSubmit}
         searchString={searchString}
         />
-      <SearchResult 
-      drinks={drinks}
-      />
+        <Link to="/"><button>Go Back</button></Link>
     </div>
     <main>
-                    <Switch>
-                        <Route
-                            path={`/drinks/:id`}
-                            render={(routerProps) => {
-                                return (<Recipe 
-                                  
-                                  match={routerProps.match}/>
-                                )}}
-                        />
-                        <Route
-                        path="/currency"
-                        render={() => <Redirect to="/drinks"/>}/>
-                    </Switch>
-                </main>
-                </div>
+      <Switch>
+          <Route
+            exact
+              path={`/drinks/:id`}
+              render={(routerProps) => {
+                  return (<Recipe
+                    match={routerProps.match}/>
+                  )}}
+          />
+        <Route
+          exact
+            path="/"
+            render={() => 
+            <SearchResult
+              drinks={drinks}
+            />}/>
+      </Switch>
+      </main>
+      </div>
   );
 }
 

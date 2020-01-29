@@ -1,12 +1,13 @@
 import React, { useState, useEffect} from 'react'
 
-function Recipe({id}) {
-    const [ingredients, setIngredients] = useState('');
+function Recipe(props) {
+    const [ingredients, setIngredients] = useState([]);
     const [recipe, setRecipe] = useState('');
+    const [image, setImage] = useState('');
+    const id = props.match.params.id;
 
     useEffect(() => {
         getRecipe(id);
-        console.log(id)
     })
 
 
@@ -16,17 +17,29 @@ function Recipe({id}) {
         fetch(url)
             .then(response => response.json())
             .then(response => {
+            setImage(response.drinks[0].strDrinkThumb)
             setRecipe(response.drinks[0].strInstructions)
-            console.log(recipe)
+                function countIng() {
+                    for(let i = 0;i <= 15; i++){
+                        if ((response.drinks[0].strIngredient(i) !== null)){
+                            setIngredients(response.drinks[0].strIngredient(i))
+                    }
+                }
+            }
+                
+                // setIngredients(response.drinks[0].strIngredient1)
+                // setIngredients(response.drinks[0].strIngredient2)
+                // setIngredients(response.drinks[0].strIngredient3)
         })
     .catch(console.error);
     }
 
     return(
-//         <ul>
-// <li>{ingredients}</li>
-//         </ul>
-    <p>done</p>
+        <div>
+        <img src={image}/>
+
+        <p>{recipe}</p>
+        </div>
     )
 }
 
