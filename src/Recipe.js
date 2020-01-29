@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react'
 
 function Recipe(props) {
+    // const [ing, setIng] = useState([])
     const [ingredients, setIngredients] = useState([]);
     const [recipe, setRecipe] = useState('');
     const [image, setImage] = useState('');
@@ -8,7 +9,8 @@ function Recipe(props) {
 
     useEffect(() => {
         getRecipe(id);
-    })
+        console.log(ingredients)
+    }, [id])
 
 
     function getRecipe(id){
@@ -17,19 +19,24 @@ function Recipe(props) {
         fetch(url)
             .then(response => response.json())
             .then(response => {
-            setImage(response.drinks[0].strDrinkThumb)
-            setRecipe(response.drinks[0].strInstructions)
-                function countIng() {
-                    for(let i = 0;i <= 15; i++){
-                        if ((response.drinks[0].strIngredient(i) !== null)){
-                            setIngredients(response.drinks[0].strIngredient(i))
-                    }
-                }
+            const data = response.drinks[0]
+            setImage(data.strDrinkThumb)
+            setRecipe(data.strInstructions)
+
+            function getIng(){
+                const ingredients = [];
+                let i = 1;
+                while (data["strIngredient" + i]) {
+                    const name = data["strIngredient" + i];
+                    const measurement = data["strMeasure" + i];
+                    ingredients.push(measurement + " " + name);
+                    i++;
             }
-                
-                // setIngredients(response.drinks[0].strIngredient1)
-                // setIngredients(response.drinks[0].strIngredient2)
-                // setIngredients(response.drinks[0].strIngredient3)
+                setIngredients(ingredients)
+        }
+            getIng();
+
+            
         })
     .catch(console.error);
     }
@@ -37,7 +44,12 @@ function Recipe(props) {
     return(
         <div>
         <img src={image}/>
-
+        <h4>Ingredients:</h4>
+        <ul>
+            {ingredients.map(item => (
+                <li key={item.replace(/\s/g, "")}>{item}</li>
+            ))}
+        </ul>
         <p>{recipe}</p>
         </div>
     )
