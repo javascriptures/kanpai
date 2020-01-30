@@ -1,9 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState} from 'react';
 import { Link, Switch, Route} from 'react-router-dom'
 import Recipe from './Recipe'
 import Header from './Header';
 import MenuBar from './MenuBar';
 import SearchResult from './SearchResult'
+import "./App.css"
 
 function App() {
 
@@ -18,7 +19,6 @@ function App() {
     .then(response => response.json())
     .then(response => {
       setDrinks(response.drinks);
-      console.log(drinks)
       setSearchString('')
     })
     .catch(console.error);
@@ -30,7 +30,6 @@ function App() {
       .then(response => response.json())
       .then(response => {
         setDrinks(response.drinks);
-        console.log(drinks)
         setSearchString('')
       })
       .catch(console.error);
@@ -56,28 +55,30 @@ function App() {
         handleSubmit={handleSubmit}
         searchString={searchString}
         />
-        <Link to="/"><button>Go Back</button></Link>
-    </div>
+        <Link to="/"><button>Go Back To Home</button></Link>
+  </div>
     <main>
       <Switch>
-          <Route
-            exact
-              path={`/drinks/:id`}
-              render={(routerProps) => {
-                  return (<Recipe
-                    match={routerProps.match}/>
-                  )}}
-          />
+        <Route
+          exact
+            path={`/drinks/:id`}
+            render={(routerProps) => {
+                return (<Recipe
+                  match={routerProps.match}/>
+                )}}
+        />
         <Route
           exact
             path="/"
             render={() => 
-            <SearchResult
-              drinks={drinks}
-            />}/>
-      </Switch>
+              <SearchResult
+                drinks={drinks}
+              />
+            }
+          />
+        </Switch>
       </main>
-      </div>
+    </div>
   );
 }
 

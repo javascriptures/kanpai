@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import './SearchResult.css'
 import "./images/image1.png"
 
 const SearchResult = ({drinks}) => {
@@ -9,13 +8,10 @@ const SearchResult = ({drinks}) => {
         return (
             <div className="container">
             <div className= "gallery" key={id}>
-                    <Link to={`/drinks/${id}`} id={id}>
-                        <div>
-                            <img className = "cocktail"src={drink.strDrinkThumb}/>
-                        <h2 className="title">{drink.strDrink}</h2>
-                        <div className="frame">
-                            <img src="./images/image1.png"/>
-                            </div>
+                    <Link to={`/drinks/${id}`} id={id} style={{ textDecoration: 'none' }}>
+                        <div className="galleryMembers">
+                            <img className = "cocktail"src={drink.strDrinkThumb} alt="Cocktails"/>
+                        <h2 className="description">{drink.strDrink}</h2>
                         </div>
                     </Link>
             </div>
@@ -24,8 +20,7 @@ const SearchResult = ({drinks}) => {
     })
 
     if (!drinks.length) {
-        console.log(drinks)
-        return <div className="noSearch"><img className="nothingHere" src = "https://media.giphy.com/media/l2SpRf55ejxqJ53UY/giphy.gif"/> </div>
+        return <div className="noSearch"><img className="nothingHere" src = "https://media.giphy.com/media/l2SpRf55ejxqJ53UY/giphy.gif" alt="Nothing to see here"/> </div>
     }
     return(
         <div>
