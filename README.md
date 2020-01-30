@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#Kanpai Cocktail Directory
 
-## Available Scripts
+Kanpai is a React-based application that pulls data from The Cocktail DB API (https://www.thecocktaildb.com/api.php). Using the search bar, users can look up cocktail recipes by ingredient or drink name and view the recipe by clicking on the drink of their choosing. This project was something I felt there was a need for because I often find myself wanting to make fancy drinks or cocktails but having no idea how to make drinks from my very limited ingredients.
 
-In the project directory, you can run:
+##Setup
 
-### `yarn start`
+###Webpage Setup
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Find the Kanpai site here: https://kanpaiproject.herokuapp.com/
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Open the page, search for your favorite drink, and voila!
 
-### `yarn test`
+###Github Setup
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Fork this directory to your own account. "git clone" it into the directory of your choice. "cd" into your new Kanpai directory. Run "npm run start" and watch the project come to life in your browser!
 
-### `yarn build`
+##Technologies Used
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+###React Hooks
+![Screen Shot 2020-01-30 at 7 37 51 AM](https://user-images.githubusercontent.com/57779829/73464262-7e534180-4333-11ea-94db-17a19e731a8e.png)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Kanpai utilizes React Hooks for state management throughout the components. I find Hooks to be the simplest way to manage the state in an app and it worked very seamlessly for my purposes in this project. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+###API Fetching
+![Screen Shot 2020-01-30 at 7 42 13 AM](https://user-images.githubusercontent.com/57779829/73464624-12250d80-4334-11ea-8a00-fb30508ce01f.png)
+![Screen Shot 2020-01-30 at 7 45 34 AM](https://user-images.githubusercontent.com/57779829/73464950-82339380-4334-11ea-8971-3640c192d8e9.png)
 
-### `yarn eject`
+As mentioned earlier, this project fetches data from TheCocktailDB API. TheCocktailDB is an open-source cocktail/alcoholic drink open-source API. It does not use keys when used for educational and personal use. I found this API extremely difficult to work with, especially when trying to list ingredients and measurements for the recipes. I had to borrow a code snippet from Jennifer Meade to even be able to pull an ingredient and measurment list for each recipe. I would not recommend nor use this API in the future, but, nontheless, it gave me the data I needed and served its purpose to the best extent that I could manage.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+###React Router
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Screen Shot 2020-01-30 at 7 42 13 AM](https://user-images.githubusercontent.com/57779829/73465524-5bc22800-4335-11ea-9a46-c63154bdfa7d.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Kanpai uses React Routers for navigation to the home page, search results, and individual recipe pages. I found routing pages to have a bit of a learning curve in this project and it cost me quite a bit of time midway through but they are endlessly helpful for seamless app navigation. 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
