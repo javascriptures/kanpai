@@ -5,6 +5,7 @@ import React from 'react'
 function Header(props) {
     const { handleSubmit, handleChange, searchString } = props;
     return (
+        <div className="searchbar">
         <form 
         onSubmit={handleSubmit}
         className="form-horizontal">
@@ -12,8 +13,9 @@ function Header(props) {
             onChange={handleChange}
             value={searchString}
             />
-            <button type="submit">Search</button>
+            <button className="submit"type="submit">Let's find some drinks!</button>
         </form>
+        </div>
     );
 }
 

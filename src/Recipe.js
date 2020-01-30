@@ -32,6 +32,7 @@ function Recipe(props) {
                     ingredients.push(measurement + " " + name);
                     i++;
             }
+            
                 setIngredients(ingredients)
         }
             getIng();

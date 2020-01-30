@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Link, Switch, Route, Redirect} from 'react-router-dom'
+import { Link, Switch, Route} from 'react-router-dom'
 import Recipe from './Recipe'
 import Header from './Header';
+import MenuBar from './MenuBar';
 import SearchResult from './SearchResult'
 
 function App() {
@@ -23,7 +24,6 @@ function App() {
     .catch(console.error);
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getDrinks = (searchString) => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchString}`
     fetch(url)
@@ -50,6 +50,7 @@ function App() {
   return (
     <div>
     <div>
+      <MenuBar/>
       <Header 
         handleChange={handleChange}
         handleSubmit={handleSubmit}
