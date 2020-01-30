@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import "./images/image1.png"
 
 const SearchResult = ({drinks}) => {
     let cocktails = drinks.map((drink) => {
