@@ -33,4 +33,8 @@ As mentioned earlier, this project fetches data from TheCocktailDB API. TheCockt
 
 Kanpai uses React Routers for navigation to the home page, search results, and individual recipe pages. I found routing pages to have a bit of a learning curve in this project and it cost me quite a bit of time midway through but they are endlessly helpful for seamless app navigation. 
 
+## Contribution Guidelines
 
+#### For those who wish to contribute or edit this application...
+
+I welcome any help in the development of this app and I only ask that my work and the work I've borrowed from others is credited properly. Always feel free to submit pull requests or issues to contribute to the work I have here. 
