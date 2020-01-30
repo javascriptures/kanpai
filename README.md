@@ -2,6 +2,10 @@
 
 Kanpai is a React-based application that pulls data from The Cocktail DB API (https://www.thecocktaildb.com/api.php). Using the search bar, users can look up cocktail recipes by ingredient or drink name and view the recipe by clicking on the drink of their choosing. This project was something I felt there was a need for because I often find myself wanting to make fancy drinks or cocktails but having no idea how to make drinks from my very limited ingredients.
 
+![Screen Shot 2020-01-30 at 8 43 18 AM](https://user-images.githubusercontent.com/57779829/73470413-b3b05d00-433c-11ea-922b-337c64e852b9.png)
+![Screen Shot 2020-01-30 at 8 43 56 AM](https://user-images.githubusercontent.com/57779829/73470420-b743e400-433c-11ea-8f04-a24f1fe5e9aa.png)
+
+
 ## Setup
 
 ### Webpage Setup
