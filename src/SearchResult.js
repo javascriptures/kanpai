@@ -2,10 +2,12 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 const SearchResult = ({drinks}) => {
-    let cocktails = drinks.map((drink) => {
+    let cocktails;
+    if (drinks !== null){
+    cocktails = drinks.map((drink) => {
         const id = drink.idDrink
         return (
-            <div className="container">
+            <div className="container" key={id}>
             <div className= "gallery" key={id}>
                     <Link to={`/drinks/${id}`} id={id} style={{ textDecoration: 'none' }}>
                         <div className="galleryMembers">
@@ -17,8 +19,9 @@ const SearchResult = ({drinks}) => {
             </div>
         )
     })
+}
 
-    if (!drinks.length) {
+    else {
         return <div className="noSearch"><img className="nothingHere" src = "https://media.giphy.com/media/l2SpRf55ejxqJ53UY/giphy.gif" alt="Nothing to see here"/> </div>
     }
     return(
