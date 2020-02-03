@@ -12,27 +12,27 @@ function App() {
   const [searchString, setSearchString] = useState('');
 
 
-
-  const getIng = (searchString) => {
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchString}`
+  const getIng = ({searchString}) => {
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${searchString}`;
     fetch(url)
     .then(response => response.json())
+    .then(response => console.log(response.json()))
     .then(response => {
       setDrinks(response.drinks);
       setSearchString('')
     })
-    .catch(console.error);
+      .catch((error) => { return 0; });
   }
 
   const getDrinks = (searchString) => {
-    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchString}`
+    const url = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${searchString}`;
     fetch(url)
       .then(response => response.json())
       .then(response => {
         setDrinks(response.drinks);
         setSearchString('')
       })
-      .catch(console.error);
+      .catch((error)=> {return 0;});
   }
 
   function handleChange(event) {
